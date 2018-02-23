@@ -3,7 +3,7 @@
     <div class="row justify-content-center align-content-center">
       <div class="card">
         <img class="card-img-top"
-             src="../assets/logo-empodere-se.png">
+             src="../assets/logo.png">
         <div class="card-block p-4">
           <form>
             <div class="form-group">
