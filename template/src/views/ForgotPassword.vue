@@ -58,7 +58,7 @@ export default {
       this.success.message = ''
       this.error.message = ''
       evt.preventDefault()
-      this.$store.dispatch('resetPassword', {
+      this.$store.dispatch('auth/resetPassword', {
         email: this.email,
         success: result => {
           this.success.message = 'Reset email sent.'

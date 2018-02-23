@@ -57,7 +57,7 @@ export default {
   methods: {
     onSubmit (evt) {
       evt.preventDefault()
-      this.$store.dispatch('signIn', {
+      this.$store.dispatch('auth/signIn', {
         error: err => {
           this.error = err
         },

@@ -1,6 +1,12 @@
-# {{name}}
+# Vue Loopback Template
 
-> {{description}}
+> A vue project template with support for firebase based on official webpack
+
+## Usage
+
+``` bash
+vue init InCuca/vue-firebase my-project
+```
 
 ## Configure
 

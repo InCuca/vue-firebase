@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import store from './store'
 import {sync} from 'vuex-router-sync'
+import { fbSyncRouter } from './services/firebase'
 import BootstrapVue from 'bootstrap-vue'
 
 import 'bootstrap/dist/css/bootstrap.css'
@@ -28,6 +29,12 @@ Vue.component = originalVueComponent
 
 // Sync Router and Vuex (add router to state)
 sync(store, router)
+
+// Sync Router, Vuex and Firebase Auth
+fbSyncRouter(
+  router,
+  u => !store.state.auth.user && store.commit('auth/setUser', u)
+)
 
 /* eslint-disable no-new */
 new Vue({

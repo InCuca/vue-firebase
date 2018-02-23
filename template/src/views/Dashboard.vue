@@ -40,7 +40,7 @@ export default {
   },
   methods: {
     signOut () {
-      this.$store.dispatch('signOut')
+      this.$store.dispatch('auth/signOut')
     }
   }
 }

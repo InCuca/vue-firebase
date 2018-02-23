@@ -1,3 +1,4 @@
 node_modules
 test-project
 npm-debug.log
+package-lock.json

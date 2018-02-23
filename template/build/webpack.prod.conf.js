@@ -98,7 +98,28 @@ const webpackConfig = merge(baseWebpackConfig, {
         to: config.build.assetsSubDirectory,
         ignore: ['.*']
       }
-    ])
+    ]),
+    // copy firebase cloud functions
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(__dirname, '../functions'),
+        to: path.resolve(config.build.dist, 'functions'),
+      }
+    ]),
+    // copy firebase database rules json
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(__dirname, '../database.rules.json'),
+        to: config.build.dist,
+      }
+    ]),
+    // copy firebase json
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(__dirname, '../firebase.json'),
+        to: config.build.dist,
+      }
+    ]),
   ]
 })
 

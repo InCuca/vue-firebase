@@ -1,0 +1,25 @@
+{
+  "name": "vue-firebase",
+  "version": "0.0.1",
+  "description": "A vue project template with support for firebase based on official webpack",
+  "main": "meta.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/InCuca/vue-firebase.git"
+  },
+  "keywords": [
+    "vuejs"
+  ],
+  "author": "Walker Leite",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/InCuca/vue-firebase/issues"
+  },
+  "homepage": "https://github.com/InCuca/vue-firebase#readme",
+  "devDependencies": {
+    "vue-cli": "^2.9.1"
+  }
+}
