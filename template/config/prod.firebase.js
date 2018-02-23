@@ -1,10 +1,10 @@
 module.exports = {
-  "apiKey": "hackme",
-  "authDomain": "my-app-prod.firebaseapp.com",
-  "databaseURL": "https://my-app-prod.firebaseio.com",
-  "projectId": "my-app-prod",
-  "storageBucket": "my-app-prod.appspot.com",
-  "messagingSenderId": "000000000",
+  "apiKey": "{{api-key}}",
+  "authDomain": "{{project-id}}.firebaseapp.com",
+  "databaseURL": "https:{{project-id}}.firebaseio.com",
+  "projectId": "{{project-id}}",
+  "storageBucket": "{{project-id}}.appspot.com",
+  "messagingSenderId": "{{sender-id}}",
   "hosting": {
     "public": "public",
     "rewrites": [
