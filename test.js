@@ -1,8 +1,15 @@
 const {spawn} = require('child_process');
 
+const initQuestions = [
+  { search: /^\? The firebase project ID.+/, response: "vue-firebase-e222e\n"},
+  { search: /^\? Firebase API Key.+/, response: "AIzaSyCWsximlLQkbhBAG4wZ_PBYrIfpp3942EQ\n" },
+  { search: /^\? Firebase Sender ID.+/, response: "447921175322\n" },
+  {search: /^\?.+/, response: "\n"},
+];
+
 const commands = [
   {cmd: 'rm', args: ['-r', 'test-project'], ignoreErrors: true},
-  {cmd: './node_modules/.bin/vue', args: ['init', '.', 'test-project'], yes: true},
+  {cmd: './node_modules/.bin/vue', args: ['init', '.', 'test-project'], responses: initQuestions},
   {cmd: 'npm', args: ['install'], cwd: 'test-project'},
   {cmd: 'npm', args: ['run', 'lint'], cwd: 'test-project'},
   {cmd: 'npm', args: ['run', 'build'], cwd: 'test-project'},
@@ -12,24 +19,31 @@ const commands = [
 
 function executeCommand(command, index) {
   return new Promise((resolve, reject) => {
-    let cp = spawn(command.cmd, command.args, {cwd: command.cwd});
+    let cp = spawn(command.cmd, command.args, { cwd: command.cwd });
     process.on('exit', cp.kill);
-
     cp.stdout.setEncoding('utf-8');
     cp.stdin.setEncoding('utf-8');
+    cp.stderr.setEncoding('utf-8');
 
     // Ignore pipe errors
-    cp.stdin.on('error', () => {});
-    cp.stdout.on('error',() => {});
+    cp.stdin.on('error', () => { });
+    cp.stdout.on('error', () => { });
 
-    // cp.stdout.pipe(process.stdout);
+    cp.stdout.pipe(process.stdout);
     cp.stderr.pipe(process.stderr);
 
     let rejected = false;
-    if(command.yes) {
-      cp.stdout.on('data', function() {
-        if (!rejected) cp.stdin.write("\n");
-      });
+    if (!rejected && command.responses) {
+      const registerResponse = q => {
+        cp.stdout.on('data', output => {
+          if (q.search.test(output)) {
+            // console.log('sending', q);
+            cp.stdin.write(q.response);
+          }
+        });
+      }
+
+      command.responses.forEach(registerResponse);
     }
     cp.once('error', code => {
       if (!rejected) {
@@ -45,7 +59,7 @@ function executeCommand(command, index) {
       } else {
         console.log(
           '=> process',
-          (index+1),
+          (index + 1),
           'of',
           commands.length,
           'exit with status',
