@@ -1,4 +1,4 @@
-# Vue Loopback Template
+# Vue Firebase Template
 
 > A vue project template with support for firebase based on official webpack
 
