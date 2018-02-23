@@ -8,5 +8,5 @@ export default {
     events: []
   },
   actions,
-  mutations,
+  mutations
 }

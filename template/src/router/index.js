@@ -1,8 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import store from '../store'
-
 // Views
 import Dashboard from '../views/Dashboard'
 import Login from '../views/Login'

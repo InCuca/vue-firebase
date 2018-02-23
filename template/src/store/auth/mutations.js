@@ -1,11 +1,11 @@
-export function setUser(state, user) {
+export function setUser (state, user) {
   state.user = user
 }
 
-export function emptyUser(state) {
-  state.user = null;
+export function emptyUser (state) {
+  state.user = null
 }
 
-export function setEvents(state, eventsPayload) {
+export function setEvents (state, eventsPayload) {
   state.events = eventsPayload
 }
